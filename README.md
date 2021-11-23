@@ -70,9 +70,9 @@ Implemente micro-serviços com Spring Cloud e com o suporte dos projetos Netflix
 
 - O Spring Cloud Config fornece suporte do lado do servidor e do lado do cliente para configuração externalizada em um sistema distribuído. 
   Com o Config Server, você tem um local central para gerenciar propriedades externas para aplicativos em todos os ambientes.
-  - Efetue o clone de https://bitbucket.org/WILJA/spring-boot-microservices-conf/ e coloque eu seu repositório pois as configurações dele são de extrema importância para os microservices.
+  - Efetue o clone de https://github.com/william-carvalho/config-repo e coloque eu seu repositório pois as configurações dele são de extrema importância para os microservices.
     * No microservice config no arquivo application.yml altere as seguintes informações do git:
-      * uri: https://bitbucket.org/SEUREP/spring-boot-microservices-conf/
+      * uri: https://github.com/SEUREP/config-repo
       * username: USERADMINREP
       * password: PASSWORKADMINREP
 
@@ -81,7 +81,8 @@ Implemente micro-serviços com Spring Cloud e com o suporte dos projetos Netflix
      - config 
      - eureka
      - security
-     - core
+     - aluno-service
+     - disciplina-service
      - zuul
 	  * Caso a IDE for o Intellij adicione a VM OPTIONS a seguinte informação: -Dspring.profiles.active=dev. Repita este procedimento do microservice config até o microservice zuul.
 	  * Caso a IDE for o STS procure por Boot Dashboard. Clique com o botão direito no primeiro microservico config e será apresentada uma tela para selecionar o Profile
@@ -91,8 +92,8 @@ Implemente micro-serviços com Spring Cloud e com o suporte dos projetos Netflix
      - config
      - eureka
      - security
-     - aluno-service 8080
-     - disciplina-service 8081
+     - aluno-service
+     - disciplina-service
         - zuul
          * Caso necessite de outro microservice inicie ele antes do zuul.
 	
@@ -110,7 +111,7 @@ mvn spring-boot:run
 ```
 ### Login:
 
-- Acesse localhost:8080/index.html
+- Acesse localhost:8000/index.html
 - Via client credentials
 ```
 Token Name - example
@@ -125,12 +126,12 @@ Client Authentication - Send as Basic
 ```
 INSERT INTO nexti.oauth2_client_details
 (id, client_id, access_token_validity, client_secret, grant_types, redirect_uris, refresh_token_validity, resources, scopes, secret_required, customer_id)
-VALUES(3, 'frontend', 86400, 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ', ''password'', NULL, 86400, NULL, 'openid', 1, NULL);
+VALUES(3, 'frontend', 86400, '3rf423rf35tg45r2432rf34f3r2', ''password'', NULL, 86400, NULL, 'openid', 1, NULL);
 
 POST - http://localhost:8080/security/oauth/token?grant_type=password&username=william@example.com&password=123
 TYPE - BASIC AUTH
 USERNAME - frontend
-PASSWORD - eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ
+PASSWORD - 3rf423rf35tg45r2432rf34f3r2
 
 
 ```
